@@ -28,6 +28,12 @@
 (set-keyboard-coding-system 'utf-8-unix)
 (set-terminal-coding-system 'utf-8-unix)
 
+;; Spell checking
+(setq ispell-program-name "hunspell")
+
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
 ;; MELPA
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -147,7 +153,8 @@
 	"~/Documents/org/projects.org"))
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
-                              ("n" "Note" entry (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")))
+                              ("n" "Note" item (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
+			      ("j" "Journal Entry" plain (file+olp+datetree "~/Documents/org/journal.org") "%i%?")))
 
 (setq org-refile-targets '((nil :maxlevel . 9)
 			   ("~/Documents/org/projects.org" :maxlevel . 9)
@@ -163,10 +170,12 @@
        (tags-todo "PRIORITY=\"A\""
 		  ((org-agenda-overriding-header "Top priority tasks")
 		   (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled 'deadline))))
-       (todo "NEXT"
-	     ((org-agenda-overriding-header "Possible NEXT tasks")))
+       (todo "WAITING"
+	     ((org-agenda-overriding-header "WAITING tasks")))
        (tags "+weaknesses+PRIORITY=\"A\""
 	     ((org-agenda-overriding-header "Pending weaknesses")))
+       (todo "NEXT"
+	     ((org-agenda-overriding-header "Possible NEXT tasks")))
       nil))))
 
 ;; Remove all scheduled tasks from TODO views in Agenda
