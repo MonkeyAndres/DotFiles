@@ -125,7 +125,7 @@
 (add-hook 'org-mode-hook #'visual-line-mode)
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS(p)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@/!)")
+      (quote ((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS(p)" "BLOCKED(b@/!)" "|" "DONE(d!)" "CANCELLED(c@/!)")
 	      (sequence "IDEA(i)" "DRAFT(d)" "WRITING(w)" "|" "PUBLISHED(p)"))))
 
 (setq org-log-into-drawer t)
@@ -134,7 +134,7 @@
       (quote (("TODO" :foreground "#DF8C8C" :weight bold)
               ("NEXT" :foreground "#83AFE5" :weight bold)
 	      ("IN-PROGRESS" :foreground "#DADA93" :weight bold)
-              ("WAITING" :foreground "#D18EC2" :weight bold)
+              ("BLOCKED" :foreground "#D18EC2" :weight bold)
               ("DONE" :foreground "#A8CE93" :weight bold)
               ("CANCELLED" :foreground "#9A93E1" :weight bold)
 	      
@@ -150,7 +150,8 @@
 
 (setq org-agenda-files
       '("~/Documents/org/inbox.org"
-	"~/Documents/org/projects.org"))
+	"~/Documents/org/projects.org"
+	"~/Documents/org/work.org"))
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
                               ("n" "Note" item (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
@@ -158,20 +159,21 @@
 
 (setq org-refile-targets '((nil :maxlevel . 9)
 			   ("~/Documents/org/projects.org" :maxlevel . 9)
-                           ("~/Documents/org/someday.org" :maxlevel . 9)))
+                           ("~/Documents/org/someday.org" :maxlevel . 9)
+			   ("~/Documents/org/work.org" :maxlevel . 9)))
 
 (setq org-agenda-custom-commands
    '(("g" "Global view for today"
       ((agenda ""
 	       ((org-agenda-span 'day)
 		(org-agenda-overriding-header "Agenda for the day")))
-       (todo "IN-PROGRESS"
+       (todo "IN-PROGRESS|WRITING"
 	     ((org-agenda-overriding-header "Tasks already in progress")))
        (tags-todo "PRIORITY=\"A\""
 		  ((org-agenda-overriding-header "Top priority tasks")
-		   (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled 'deadline))))
-       (todo "WAITING"
-	     ((org-agenda-overriding-header "WAITING tasks")))
+		   (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+       (todo "BLOCKED"
+	     ((org-agenda-overriding-header "BLOCKED tasks")))
        (tags "+weaknesses+PRIORITY=\"A\""
 	     ((org-agenda-overriding-header "Pending weaknesses")))
        (todo "NEXT"
