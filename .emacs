@@ -12,11 +12,13 @@
 ;; Start week on Monday
 (setq calendar-week-start-day 1)
 
-;; Remove bookmarks when refile and capture
-(setq org-bookmark-names-plist nil)
-
 ;; Enable transient mark mode
 (transient-mark-mode 1)
+
+;; Encryption
+(require 'epa-file)
+(epa-file-enable)
+(setq epa-file-encrypt-to '("monkeyandres@protonmail.com"))
 
 ;; Font
 (set-face-attribute 'default nil
@@ -64,9 +66,6 @@
 (use-package emojify
   :hook (after-init . global-emojify-mode)
   :config
-  (when (member "Apple Color Emoji" (font-family-list))
-    (set-fontset-font
-     t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend))
   (setq emojify-display-style 'unicode)
   (setq emojify-emoji-styles '(unicode)))
 
@@ -100,7 +99,7 @@
   (marginalia-mode))
 
 ;; Visual line wrap
-(setq-default fill-column 90)
+(setq-default fill-column 80)
 
 (use-package visual-fill-column
   :config
@@ -123,6 +122,9 @@
 
 ;; Start visual-line-mode for every org file
 (add-hook 'org-mode-hook #'visual-line-mode)
+
+;; Remove bookmarks when refile and capture
+(setq org-bookmark-names-plist nil)
 
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS(p)" "BLOCKED(b@/!)" "|" "DONE(d!)" "CANCELLED(c@/!)")
@@ -150,17 +152,17 @@
 
 (setq org-agenda-files
       '("~/Documents/org/inbox.org"
-	"~/Documents/org/projects.org"
-	"~/Documents/org/work.org"))
+	"~/Documents/org/projects.org.gpg"
+	"~/Documents/org/work.org.gpg"))
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
                               ("n" "Note" item (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
-			      ("j" "Journal Entry" plain (file+olp+datetree "~/Documents/org/journal.org") "%i%?")))
+			      ("j" "Journal Entry" plain (file+olp+datetree "~/Documents/org/journal.org.gpg") "%i%?" :empty-lines 1)))
 
 (setq org-refile-targets '((nil :maxlevel . 9)
-			   ("~/Documents/org/projects.org" :maxlevel . 9)
-                           ("~/Documents/org/someday.org" :maxlevel . 9)
-			   ("~/Documents/org/work.org" :maxlevel . 9)))
+			   ("~/Documents/org/projects.org.gpg" :maxlevel . 9)
+                           ("~/Documents/org/someday.org.gpg" :maxlevel . 9)
+			   ("~/Documents/org/work.org.gpg" :maxlevel . 9)))
 
 (setq org-agenda-custom-commands
    '(("g" "Global view for today"
@@ -191,6 +193,9 @@
 
 ;; Allow refile to create parent tasks with confirmation
 (setq org-refile-allow-creating-parent-nodes (quote confirm))
+
+;; Enable the following when searching through archived stuff 
+;;(setq org-sparse-tree-open-archived-trees t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
