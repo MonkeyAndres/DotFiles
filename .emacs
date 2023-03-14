@@ -3,11 +3,19 @@
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen t)
 
-;; Disable toolbar
+;; Sane defaults
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(setq visible-bell 1)
+(setq visible-bell t
+      save-interprogram-paste-before-kill t
+      apropos-do-all t
+      load-prefer-newer t
+      frame-inhibit-implied-resize t)
+
+;; Better buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;; Start week on Monday
 (setq calendar-week-start-day 1)
