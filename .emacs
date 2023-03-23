@@ -161,7 +161,8 @@
 (setq org-agenda-files
       '("~/Documents/org/inbox.org"
 	"~/Documents/org/projects.org.gpg"
-	"~/Documents/org/work.org.gpg"))
+	"~/Documents/org/work.org.gpg"
+	"~/Documents/org/blog.org.gpg"))
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
                               ("n" "Note" item (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
@@ -170,7 +171,8 @@
 (setq org-refile-targets '((nil :maxlevel . 9)
 			   ("~/Documents/org/projects.org.gpg" :maxlevel . 9)
                            ("~/Documents/org/someday.org.gpg" :maxlevel . 9)
-			   ("~/Documents/org/work.org.gpg" :maxlevel . 9)))
+			   ("~/Documents/org/work.org.gpg" :maxlevel . 9)
+			   ("~/Documents/org/blog.org.gpg" :maxlevel . 9)))
 
 (setq org-agenda-custom-commands
    '(("g" "Global view for today"
