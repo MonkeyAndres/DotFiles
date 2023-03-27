@@ -165,13 +165,14 @@
 	"~/Documents/org/blog.org.gpg"))
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
-                              ("n" "Note" item (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
+                              ("n" "Note" entry (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
 			      ("j" "Journal Entry" plain (file+olp+datetree "~/Documents/org/journal.org.gpg") "%i%?" :empty-lines 1)))
 
 (setq org-refile-targets '((nil :maxlevel . 9)
 			   ("~/Documents/org/projects.org.gpg" :maxlevel . 9)
                            ("~/Documents/org/someday.org.gpg" :maxlevel . 9)
 			   ("~/Documents/org/work.org.gpg" :maxlevel . 9)
+   			   ("~/Documents/org/notes.org.gpg" :maxlevel . 9)
 			   ("~/Documents/org/blog.org.gpg" :maxlevel . 9)))
 
 (setq org-agenda-custom-commands
@@ -224,3 +225,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'narrow-to-region 'disabled nil)
