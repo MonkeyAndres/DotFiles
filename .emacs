@@ -12,6 +12,16 @@
       apropos-do-all t
       load-prefer-newer t
       frame-inhibit-implied-resize t)
+(setq ring-bell-function 'ignore)
+
+(setq initial-frame-alist
+      '((width . 95) (height . 40)))
+
+;; Set command as meta
+(setq mac-option-key-is-meta nil
+      mac-command-key-is-meta t
+      mac-command-modifier 'meta
+      mac-option-modifier 'none)
 
 ;; Better buffer names
 (require 'uniquify)
