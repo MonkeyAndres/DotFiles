@@ -17,11 +17,16 @@
 (setq initial-frame-alist
       '((width . 95) (height . 40)))
 
-;; Set command as meta
-(setq mac-option-key-is-meta nil
-      mac-command-key-is-meta t
-      mac-command-modifier 'meta
-      mac-option-modifier 'none)
+;; Increase font-size for 2k displays
+(set-face-attribute 'default (selected-frame) :height 140)
+
+;; Mac-specific config
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'control)
+  (setq mac-right-option-modifier 'nil)
+  )
+
 
 ;; Better buffer names
 (require 'uniquify)
@@ -50,6 +55,15 @@
 
 ;; Spell checking
 (setq ispell-program-name "hunspell")
+
+(setq ispell-local-dictionary "en_US")
+(setq ispell-local-dictionary-alist
+      ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+      ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+      '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
+
+(when (boundp 'ispell-hunspell-dictionary-alist)
+  (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
@@ -126,6 +140,18 @@
 
 (use-package adaptive-wrap
   :init (adaptive-wrap-prefix-mode 1))
+
+;; God Mode (couldn't get used to it)
+;; (use-package god-mode
+;;   :config
+;;   (global-set-key (kbd "<escape>") #'god-mode-all)
+;;   (global-set-key (kbd "C-x C-1") #'delete-other-windows)
+;;   (global-set-key (kbd "C-x C-2") #'split-window-below)
+;;   (global-set-key (kbd "C-x C-3") #'split-window-right)
+;;   (global-set-key (kbd "C-x C-0") #'delete-window)
+;;   (custom-set-faces
+;;    '(god-mode-lighter ((t (:inherit error)))))
+;;   )
 
 ;; Org mode
 (require 'org)
@@ -216,3 +242,25 @@
 
 ;; Enable the following when searching through archived stuff 
 ;;(setq org-sparse-tree-open-archived-trees t)
+<<<<<<< HEAD
+=======
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("6ca5f925de5c119694dbe47e2bc95f8bad16b46d154b3e2e0ae246fec4100ec5" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" "b54bf2fa7c33a63a009f249958312c73ec5b368b1094e18e5953adb95ad2ec3a" default))
+ '(org-modules
+   '(ol-bbdb ol-bibtex ol-docview ol-doi ol-eww ol-gnus org-habit ol-info ol-irc ol-mhe ol-rmail ol-w3m))
+ '(package-selected-packages
+   '(god-mode marginalia orderless vertico emojify nova-theme atom-one-dark-theme dracula-theme dash solarized-theme omtose-phellack-theme ef-themes adaptive-wrap visual-fill-column which-key material-theme try use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(put 'narrow-to-region 'disabled nil)
+>>>>>>> aa675c8 (chore: update .emacs config with mac-os config)
