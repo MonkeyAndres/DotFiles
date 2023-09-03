@@ -242,25 +242,3 @@
 
 ;; Enable the following when searching through archived stuff 
 ;;(setq org-sparse-tree-open-archived-trees t)
-<<<<<<< HEAD
-=======
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("6ca5f925de5c119694dbe47e2bc95f8bad16b46d154b3e2e0ae246fec4100ec5" "171d1ae90e46978eb9c342be6658d937a83aaa45997b1d7af7657546cae5985b" "b54bf2fa7c33a63a009f249958312c73ec5b368b1094e18e5953adb95ad2ec3a" default))
- '(org-modules
-   '(ol-bbdb ol-bibtex ol-docview ol-doi ol-eww ol-gnus org-habit ol-info ol-irc ol-mhe ol-rmail ol-w3m))
- '(package-selected-packages
-   '(god-mode marginalia orderless vertico emojify nova-theme atom-one-dark-theme dracula-theme dash solarized-theme omtose-phellack-theme ef-themes adaptive-wrap visual-fill-column which-key material-theme try use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'narrow-to-region 'disabled nil)
->>>>>>> aa675c8 (chore: update .emacs config with mac-os config)
