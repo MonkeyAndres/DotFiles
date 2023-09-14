@@ -116,7 +116,7 @@ If the new path's directories does not exist, create them."
 (setq completion-auto-select 'second-tab)            ; Much more eager
 ;(setq completion-auto-select t)                     ; See `C-h v completion-auto-select' for more possible values
 
-;; (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
+(keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
 ;; For a fancier built-in completion option, try ido-mode or fido-mode. See also
 ;; the file extras/base.el
@@ -150,7 +150,7 @@ If the new path's directories does not exist, create them."
 
 ;; Misc. UI tweaks
 ;; (blink-cursor-mode -1)                                ; Steady cursor
-;; (pixel-scroll-precision-mode)                         ; Smooth scrolling
+(pixel-scroll-precision-mode)                         ; Smooth scrolling
 
 ;; Use common keystrokes by default
 (cua-mode)
