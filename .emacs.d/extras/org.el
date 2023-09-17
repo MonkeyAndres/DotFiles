@@ -87,3 +87,10 @@
 
 ;; Enable the following when searching through archived stuff 
 ;;(setq org-sparse-tree-open-archived-trees
+
+;; Increase CATEGORY width in Agenda view
+(setq org-agenda-prefix-format
+   '((agenda . " %i %-14:c%?-12t% s")
+     (todo . " %i %-14:c")
+     (tags . " %i %-14:c")
+     (search . " %i %-14:c")))

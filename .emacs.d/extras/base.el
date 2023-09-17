@@ -170,20 +170,5 @@
   (setq mac-right-option-modifier 'nil)
   )
 
-;; Spell checking
-(setq ispell-program-name "hunspell")
-
-(setq ispell-local-dictionary "en_US")
-(setq ispell-local-dictionary-alist
-      ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
-      ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-      '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
-
-(when (boundp 'ispell-hunspell-dictionary-alist)
-  (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))
-
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-
 ;; Try new packages
 (use-package try)

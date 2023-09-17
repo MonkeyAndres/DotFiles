@@ -32,10 +32,9 @@
 			    (height . 45)
 
                             ;; You can turn off scroll bars by uncommenting these lines:
-                            ;; (vertical-scroll-bars . nil)
-                            ;; (horizontal-scroll-bars . nil)
-			    (scroll-bar-mode -1)
-
+                            (vertical-scroll-bars . nil)
+                            (horizontal-scroll-bars . nil)
+			    
                             ;; Setting the face in here prevents flashes of
                             ;; color as the theme gets activated
                             (background-color . "#000000")

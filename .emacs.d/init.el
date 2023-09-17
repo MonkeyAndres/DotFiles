@@ -129,15 +129,17 @@ If the new path's directories does not exist, create them."
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(when window-system (set-frame-size (selected-frame) 95 45))
+
 ;; Mode line information
 (setq line-number-mode t)                        ; Show current line in modeline
-(setq column-number-mode t)                      ; Show column as well
+;; (setq column-number-mode t)                      ; Show column as well
 
 (setq x-underline-at-descent-line nil)           ; Prettier underlines
 (setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
 
 (setq-default show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
-(setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
+;; (setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
 
 ;; Enable horizontal scrolling
 ;; (setq mouse-wheel-tilt-scroll t)
@@ -153,7 +155,7 @@ If the new path's directories does not exist, create them."
 (pixel-scroll-precision-mode)                         ; Smooth scrolling
 
 ;; Use common keystrokes by default
-(cua-mode)
+;; (cua-mode)
 
 ;; Display line numbers in programming mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -178,7 +180,8 @@ If the new path's directories does not exist, create them."
 ;; Add the time to the tab-bar, if visible
 (add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
 (add-to-list 'tab-bar-format 'tab-bar-format-global 'append)
-(setq display-time-format "%a %F %T")
+;; (setq display-time-format "%a %F %T")
+(setq display-time-format "%F %T")
 (setq display-time-interval 1)
 (display-time-mode)
 
@@ -195,6 +198,9 @@ If the new path's directories does not exist, create them."
 ;; Theaming config
 (load-file (expand-file-name "extras/theaming.el" user-emacs-directory))
 
+;; Spell checking configuration
+(load-file (expand-file-name "extras/spelling.el" user-emacs-directory))
+
 ;; Packages for software development
 ;(load-file (expand-file-name "extras/dev.el" user-emacs-directory))
 
@@ -208,7 +214,7 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(kind-icon corfu-terminal corfu embark-consult embark consult avy which-key visual-fill-column vertico use-package try orderless nova-theme marginalia god-mode emojify adaptive-wrap)))
+   '(languagetool kind-icon corfu-terminal corfu embark-consult embark consult avy which-key visual-fill-column vertico use-package try orderless nova-theme marginalia god-mode emojify adaptive-wrap)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
