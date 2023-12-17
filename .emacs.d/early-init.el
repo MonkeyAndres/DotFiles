@@ -27,6 +27,7 @@
 ;; Default frame configuration: full screen, good-looking title bar on macOS
 (setq frame-resize-pixelwise t)
 (tool-bar-mode -1)                      ; All these tools are in the menu-bar anyway
+(menu-bar-mode -1)
 
 (setq default-frame-alist '((width . 95)
 			    (height . 45)
