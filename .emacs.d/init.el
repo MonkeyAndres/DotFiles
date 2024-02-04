@@ -41,6 +41,8 @@
 ;;
 (with-eval-after-load 'package
    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+;; (unless package-archive-contents (package-refresh-contents))
+(setq use-package-always-ensure t)
 
 ;; If you want to turn off the welcome screen, uncomment this
 (setq inhibit-splash-screen t)

@@ -41,7 +41,6 @@
 (setq org-agenda-files
       '("~/Documents/org/inbox.org"
 	"~/Documents/org/projects.org.gpg"
-	"~/Documents/org/work.org.gpg"
 	"~/Documents/org/blog.org.gpg"))
 
 (setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
@@ -55,6 +54,24 @@
    			   ("~/Documents/org/notes.org.gpg" :maxlevel . 9)
 			   ("~/Documents/org/blog.org.gpg" :maxlevel . 9)))
 
+;; (setq org-agenda-custom-commands
+;;    '(("g" "Global view for today"
+;;       ((agenda ""
+;; 	       ((org-agenda-span 'day)
+;; 		(org-agenda-overriding-header "Agenda for the day")))
+;;        (todo "IN-PROGRESS|WRITING"
+;; 	     ((org-agenda-overriding-header "Tasks already in progress")))
+;;        (tags-todo "PRIORITY=\"A\""
+;; 		  ((org-agenda-overriding-header "Top priority tasks")
+;; 		   (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+;;        (todo "BLOCKED"
+;; 	     ((org-agenda-overriding-header "BLOCKED tasks")))
+;;        (tags "+weaknesses+PRIORITY=\"A\""
+;; 	     ((org-agenda-overriding-header "Pending weaknesses")))
+;;        (todo "NEXT"
+;; 	     ((org-agenda-overriding-header "Possible NEXT tasks")))
+;;       nil))))
+
 (setq org-agenda-custom-commands
    '(("g" "Global view for today"
       ((agenda ""
@@ -62,14 +79,11 @@
 		(org-agenda-overriding-header "Agenda for the day")))
        (todo "IN-PROGRESS|WRITING"
 	     ((org-agenda-overriding-header "Tasks already in progress")))
-       (tags-todo "PRIORITY=\"A\""
-		  ((org-agenda-overriding-header "Top priority tasks")
-		   (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
        (todo "BLOCKED"
 	     ((org-agenda-overriding-header "BLOCKED tasks")))
        (tags "+weaknesses+PRIORITY=\"A\""
 	     ((org-agenda-overriding-header "Pending weaknesses")))
-       (todo "NEXT"
+       (todo "NEXT|TODO"
 	     ((org-agenda-overriding-header "Possible NEXT tasks")))
       nil))))
 
