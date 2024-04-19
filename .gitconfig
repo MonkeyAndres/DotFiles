@@ -12,6 +12,9 @@
 [log]
 	decorate = short
 
+[rebase]
+	autostash = true
+
 [pull]
 	rebase = true
 
