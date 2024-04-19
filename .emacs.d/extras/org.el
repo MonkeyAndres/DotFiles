@@ -43,9 +43,14 @@
 	"~/Documents/org/projects.org.gpg"
 	"~/Documents/org/blog.org.gpg"))
 
-(setq org-capture-templates '(("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
-                              ("n" "Note" entry (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
-			      ("j" "Journal Entry" plain (file+olp+datetree "~/Documents/org/journal.org.gpg") "%i%?" :empty-lines 1)))
+(setq org-capture-templates '(
+			      ("t" "Todo" entry (file+headline "~/Documents/org/inbox.org" "Tasks") "* TODO %i%?")
+;;                              ("n" "Note" entry (file+headline "~/Documents/org/inbox.org" "Notes") "* %i%?")
+;;			      ("j" "Journal Entry" plain (file+olp+datetree "~/Documents/org/journal.org.gpg") "%i%?" :empty-lines 1)
+			      ("j" "Diary Entry" entry (file+olp+datetree "~/Documents/org/journal.org.gpg")
+         "* %<%H:%M> - %^{Action}\n%i%?" :empty-lines-before 1)
+  )
+)
 
 (setq org-refile-targets '((nil :maxlevel . 9)
 			   ("~/Documents/org/projects.org.gpg" :maxlevel . 9)
