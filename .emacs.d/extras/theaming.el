@@ -44,7 +44,7 @@
 (use-package auto-dark
   :ensure t
   :config 
-  (setq auto-dark-dark-theme 'nova-theme)
+  (setq auto-dark-dark-theme 'nova)
   (setq auto-dark-light-theme 'whiteboard)
   (setq auto-dark-polling-interval-seconds 5)
   (auto-dark-mode t))
