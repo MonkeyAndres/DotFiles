@@ -36,7 +36,18 @@
 (mapc #'disable-theme custom-enabled-themes)
 
 (use-package nova-theme
-  :config (load-theme 'nova t))
+  :config
+;;  (load-theme 'nova t)
+)
+
+;; Auto light/dark theme
+(use-package auto-dark
+  :ensure t
+  :config 
+  (setq auto-dark-dark-theme 'nova-theme)
+  (setq auto-dark-light-theme 'whiteboard)
+  (setq auto-dark-polling-interval-seconds 5)
+  (auto-dark-mode t))
 
 ;; Emojis
 (use-package emojify

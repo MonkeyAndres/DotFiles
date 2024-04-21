@@ -41,8 +41,8 @@
 ;;
 (with-eval-after-load 'package
    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
-;; (unless package-archive-contents (package-refresh-contents))
-(setq use-package-always-ensure t)
+(unless package-archive-contents (package-refresh-contents))
+;;(setq use-package-always-ensure t)
 
 ;; If you want to turn off the welcome screen, uncomment this
 (setq inhibit-splash-screen t)
@@ -185,7 +185,7 @@ If the new path's directories does not exist, create them."
 ;; (setq display-time-format "%a %F %T")
 (setq display-time-format "%F %T")
 (setq display-time-interval 1)
-(display-time-mode)
+;; (display-time-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
