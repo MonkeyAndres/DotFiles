@@ -39,9 +39,30 @@
 ;; You can simply uncomment the following if you'd like to get started with
 ;; MELPA packages quickly:
 ;;
-(with-eval-after-load 'package
-   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
-(unless package-archive-contents (package-refresh-contents))
+(setq package-user-dir (expand-file-name "elpa" user-emacs-directory)
+      package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("cselpa" . "https://elpa.thecybershadow.net/packages/")
+        ))
+
+(unless (bound-and-true-p package--initialized)
+  (setq package-enable-at-startup nil)          ; To prevent initializing twice
+  (package-initialize))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-and-compile
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t)
+  (setq use-package-compute-statistics t)
+  (setq use-package-enable-imenu-support t))
+
+;;(with-eval-after-load 'package
+;;   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+;;(unless package-archive-contents (package-refresh-contents))
 ;;(setq use-package-always-ensure t)
 
 ;; If you want to turn off the welcome screen, uncomment this
