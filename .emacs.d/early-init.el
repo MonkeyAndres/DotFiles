@@ -38,4 +38,5 @@
 			    
                             ;; Setting the face in here prevents flashes of
                             ;; color as the theme gets activated
-                            (background-color . "#000000")))
+                            ;;(background-color . "#000000")
+			    ))

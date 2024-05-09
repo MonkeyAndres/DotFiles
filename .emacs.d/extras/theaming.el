@@ -30,20 +30,18 @@
   :init (adaptive-wrap-prefix-mode 1))
 
 ;; Themes
+(setq custom-safe-themes t)
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
 
 ;; Disable all other themes to avoid awkward blending:
 (mapc #'disable-theme custom-enabled-themes)
 
-(use-package nova-theme
-  :config
-;;  (load-theme 'nova t)
-)
+(use-package nova-theme :ensure :defer)
 
 ;; Auto light/dark theme
 (use-package auto-dark
   :ensure t
-  :config 
+  :config
   (setq auto-dark-dark-theme 'nova)
   (setq auto-dark-light-theme 'whiteboard)
   (setq auto-dark-polling-interval-seconds 5)
