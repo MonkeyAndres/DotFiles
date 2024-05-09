@@ -33,3 +33,7 @@ end
 
 # Redirect ollama commands to Docker container
 alias ollama="docker exec ollama ollama"
+
+# GOPATH
+set -gx GOPATH /home/monkey/go
+set -U fish_user_paths "$GOPATH/bin" $fish_user_paths
