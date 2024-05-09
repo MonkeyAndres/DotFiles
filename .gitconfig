@@ -21,4 +21,4 @@
 [commit]
 	gpgsign = true
 [core]
-	editor = emacs -nw --color
+	editor = emacs -nw
