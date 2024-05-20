@@ -1,0 +1,16 @@
+[Unit]
+Description=MongoDB in Podman
+
+[Container]
+ContainerName=mongo
+Image=docker.io/library/mongo:latest
+PublishPort=27017:27017
+Volume=%h/Work/tool-cms/.data:/data/db
+AutoUpdate=registry
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
