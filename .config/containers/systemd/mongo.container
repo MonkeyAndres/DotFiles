@@ -5,7 +5,7 @@ Description=MongoDB in Podman
 ContainerName=mongo
 Image=docker.io/library/mongo:latest
 PublishPort=27017:27017
-Volume=%h/Work/tool-cms/.data:/data/db
+Volume=mongo-data:/data/db
 AutoUpdate=registry
 
 [Service]
