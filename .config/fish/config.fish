@@ -3,6 +3,9 @@ if status is-interactive
     
     # Remove greeting
     set -U fish_greeting
+
+    # Setup Atuin for history sync
+    atuin init fish | source
 end
 
 # Created by `pipx` on 2024-03-31 23:48:51
