@@ -35,7 +35,7 @@ end
 # <<< conda initialize <<<
 
 # Redirect ollama commands to Docker container
-alias ollama="docker exec ollama ollama"
+# alias ollama="docker exec ollama ollama"
 
 # GOPATH
 set -gx GOPATH /home/monkey/go
