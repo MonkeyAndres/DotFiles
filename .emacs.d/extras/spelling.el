@@ -1,11 +1,11 @@
 ;; Basic spell checking with Hunspell
-(setq ispell-program-name "hunspell")
-
-(setq ispell-local-dictionary "en_US")
-(setq ispell-local-dictionary-alist
-      ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
-      ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-      '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
+(with-eval-after-load "ispell"
+    (setq ispell-program-name "hunspell")
+    (setq ispell-dictionary "en_US,en_GB,es_ES")
+    ;; ispell-set-spellchecker-params has to be called
+    ;; before ispell-hunspell-add-multi-dic will work
+    (ispell-set-spellchecker-params)
+    (ispell-hunspell-add-multi-dic "en_US,en_GB,es_ES"))
 
 (when (boundp 'ispell-hunspell-dictionary-alist)
   (setq ispell-hunspell-dictionary-alist ispell-local-dictionary-alist))

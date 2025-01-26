@@ -6,6 +6,7 @@
 (global-set-key (kbd "C-c c") #'org-capture)
 
 (setq org-startup-indented t)
+(setq org-hide-leading-stars t)
 
 ;; Start visual-line-mode for every org file
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
